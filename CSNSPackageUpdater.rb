@@ -12,7 +12,7 @@ Dir.foreach(path_for_modified_files) do |item|
   new_directory_name = item.sub('.', '').sub(' ','').sub('-', '')
   files_to_add_package_statement = []
   Dir.foreach(item) do |file|
-    next if file == '.' or file == '..'
+    next if file == '.' or file == '..' or !file.include? ".java"
     files_to_add_package_statement<< "#{new_directory_name}/#{file}"
   end
   #puts files_to_add_package_statement.inspect
